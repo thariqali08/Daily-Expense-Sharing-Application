@@ -58,14 +58,8 @@ To run this project locally, you need to have the following installed:
     ```bash
     python manage.py migrate
     ```
-
-6. **Create a Superuser**:
-    To manage users and expenses via the Django admin panel:
-    ```bash
-    python manage.py createsuperuser
-    ```
-
-7. **Run the Development Server**:
+    
+6. **Run the Development Server**:
     ```bash
     python manage.py runserver
     ```
