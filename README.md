@@ -41,20 +41,12 @@ To run this project locally, you need to have the following installed:
       python -m venv venv
       venv\Scripts\activate
       ```
-      
-3. **Configure Environment Variables**:
-   - Create a `.env` file in the project root directory for sensitive information like database settings or secret keys. You can use SQLite for local development, so the `.env` file might be as simple as:
-     ```
-     SECRET_KEY=your-secret-key-here
-     DEBUG=True
-     ```
-
-4. **Apply Database Migrations**:
+3. **Apply Database Migrations**:
     ```bash
     python manage.py migrate
     ```
     
-5. **Run the Development Server**:
+4. **Run the Development Server**:
     ```bash
     python manage.py runserver
     ```
