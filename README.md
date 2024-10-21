@@ -10,8 +10,8 @@ This project is a backend service for a daily-expenses sharing application. User
   - **Equal**: Split the expenses equally among participants.
   - **Exact**: Specify the exact amount each participant owes.
   - **Percentage**: Split expenses based on percentages (ensures the total percentage adds up to 100%).
-- **Balance Sheet**: View individual expenses and overall expenses for all users. Downloadable in CSV or PDF format.
-- **API Endpoints**: Well-documented API with support for Postman and cURL testing.
+- **Balance Sheet**: View individual expenses and overall expenses for all users. Downloadable in CSV format.
+- **API Endpoints**: Well-documented API with support for Postman or cURL testing.
 
 ## Setup Instructions
 
@@ -41,25 +41,20 @@ To run this project locally, you need to have the following installed:
       python -m venv venv
       venv\Scripts\activate
       ```
-
-3. **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. **Configure Environment Variables**:
+      
+3. **Configure Environment Variables**:
    - Create a `.env` file in the project root directory for sensitive information like database settings or secret keys. You can use SQLite for local development, so the `.env` file might be as simple as:
      ```
      SECRET_KEY=your-secret-key-here
      DEBUG=True
      ```
 
-5. **Apply Database Migrations**:
+4. **Apply Database Migrations**:
     ```bash
     python manage.py migrate
     ```
     
-6. **Run the Development Server**:
+5. **Run the Development Server**:
     ```bash
     python manage.py runserver
     ```
@@ -72,9 +67,9 @@ To run this project locally, you need to have the following installed:
   - Example:
     ```json
     {
-      "email": "user@example.com",
-      "name": "John Doe",
-      "mobile_number": "1234567890"
+      "email": "thariq@gmail.com",
+      "name": "Thariq Ali",
+      "mobile_number": "9791555000"
     }
     ```
 
@@ -120,9 +115,9 @@ To run this project locally, you need to have the following installed:
    - In the **Body** tab, choose `raw` and set the data type to `JSON`. Enter user data as shown:
      ```json
      {
-       "email": "user@example.com",
-       "name": "John Doe",
-       "mobile_number": "1234567890"
+      "email": "thariq@gmail.com",
+      "name": "Thariq Ali",
+      "mobile_number": "9791555000"
      }
      ```
    - Hit **Send** to create a new user.
@@ -132,29 +127,20 @@ To run this project locally, you need to have the following installed:
    - In the **Body** tab, enter the expense data:
      ```json
      {
-       "description": "Dinner",
-       "amount": 5000,
-       "payer": 1,
-       "participants": [1, 2],
-       "split_method": "percentage",
-       "split_details": [
-         {"user": 1, "percentage": 50},
-         {"user": 2, "percentage": 50}
-       ]
-     }
+       "description": "Stationery Things",
+        "amount": "3500.00",
+        "split_method": "percentage",
+        "split_details": {
+            "1": 50,
+            "2": 25,
+            "3": 25
+        },
+        "payer": 3,
+        "participants": [1,2,3]
+     },
      ```
    - Hit **Send** to add an expense.
 
 4. **Retrieve Balance Sheet**:
    - Create a `GET` request to `http://127.0.0.1:8000/api/expenses/1/balance-sheet/download/`.
-   - The balance sheet for the expense will be returned in your desired format (e.g., CSV or PDF).
-
-### Testing with cURL
-
-For users who prefer using `cURL` in the command line, here are a few examples:
-
-- **Create User**:
-  ```bash
-  curl -X POST http://127.0.0.1:8000/api/users/ \
-  -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "name": "John Doe", "mobile_number": "1234567890"}'
+   - The balance sheet for the expense will be returned in your CSV format
